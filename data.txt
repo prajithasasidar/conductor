@@ -1,0 +1,36 @@
+PUT http://localhost:8080/api/metadata/workflow
+
+[{
+		"name": "myfirst_worflow",
+		"description": "A POC for check in work flow",
+		"version": 2,
+		"tasks": [
+			{
+				"name": "mywork_flow",
+				"taskReferenceName": "mywork_flow",
+				"inputParameters": {
+					"name": "${workflow.input.name}"
+				},
+				"type": "SIMPLE"
+			}
+				
+	],
+	"outputParameters": {
+			"name": "${mywork_flow.output.name}"
+	},
+	"schemaVersion": 2
+}]
+
+
+POST http://localhost:8080/api/metadata/taskdefs
+
+[{
+		"name": "mywork_flow",
+		"taskReferenceName": "mywork_flow",
+		"type": "SIMPLE"
+	}]
+	
+	
+POST localhost:8080/api/workflow/myfirst_worflow
+
+{"name":"ravi...."}
